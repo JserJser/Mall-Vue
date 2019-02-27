@@ -1,6 +1,7 @@
 // 获取秒杀数据
 import Axios from 'axios';
-export const loadSeckillsInfo = ({ commit }) => {
+
+export const loadSeckillsInfo = ({commit}) => {
   return new Promise((resolve, reject) => {
     const data = [
       {
@@ -50,7 +51,7 @@ export const loadSeckillsInfo = ({ commit }) => {
 };
 
 // 获取轮播(营销)图片
-export const loadCarouselItems = ({ commit }) => {
+export const loadCarouselItems = ({commit}) => {
   return new Promise((resolve, reject) => {
     const data = {
       carouselItems: [
@@ -70,11 +71,11 @@ export const loadCarouselItems = ({ commit }) => {
 };
 
 // 加载电脑专栏数据
-export const loadComputer = ({ commit }) => {
+export const loadComputer = ({commit}) => {
   return new Promise((resolve, reject) => {
     const computer = {
       title: '电脑数码',
-      link: [ '电脑馆', '游戏极品', '装机大师', '职场焕新', '女神频道', '虚拟现实', '二合一平板', '电子教育', '万物周刊' ],
+      link: ['电脑馆', '游戏极品', '装机大师', '职场焕新', '女神频道', '虚拟现实', '二合一平板', '电子教育', '万物周刊'],
       detail: [
         {
           bigImg: 'static/img/index/computer/item-computer-1.jpg',
@@ -143,11 +144,11 @@ export const loadComputer = ({ commit }) => {
 };
 
 // 加载爱吃专栏数据
-export const loadEat = ({ commit }) => {
+export const loadEat = ({commit}) => {
   return new Promise((resolve, reject) => {
     const eat = {
       title: '爱吃',
-      link: [ '休闲零食', '坚果', '牛奶', '饮料冲调', '食用油', '大米', '白酒', '红酒', '烧烤食材', '牛排', '樱桃' ],
+      link: ['休闲零食', '坚果', '牛奶', '饮料冲调', '食用油', '大米', '白酒', '红酒', '烧烤食材', '牛排', '樱桃'],
       detail: [
         {
           bigImg: 'static/img/index/eat/item-eat-1-1.jpg',
@@ -216,7 +217,7 @@ export const loadEat = ({ commit }) => {
 };
 
 // 请求获得商品详细信息
-export const loadGoodsInfo = ({ commit }) => {
+export const loadGoodsInfo = ({commit}) => {
   commit('SET_LOAD_STATUS', true);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -363,8 +364,8 @@ export const loadGoodsInfo = ({ commit }) => {
         ],
         remarks: {
           goodAnalyse: 90,
-          remarksTags: [ '颜色可人', '实惠优选', '严丝合缝', '极致轻薄', '质量没话说', '比定做还合适', '完美品质', '正品行货', '包装有档次', '不容易发热', '已经买第二个', '是全覆盖' ],
-          remarksNumDetail: [ 2000, 3000, 900, 1 ],
+          remarksTags: ['颜色可人', '实惠优选', '严丝合缝', '极致轻薄', '质量没话说', '比定做还合适', '完美品质', '正品行货', '包装有档次', '不容易发热', '已经买第二个', '是全覆盖'],
+          remarksNumDetail: [2000, 3000, 900, 1],
           detail: [
             {
               username: 'p****1',
@@ -418,7 +419,7 @@ export const loadGoodsInfo = ({ commit }) => {
 };
 
 // 获取商品列表
-export const loadGoodsList = ({ commit }) => {
+export const loadGoodsList = ({commit}) => {
   commit('SET_LOAD_STATUS', true);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -605,14 +606,14 @@ export const loadGoodsList = ({ commit }) => {
 };
 
 // 添加购物车
-export const addShoppingCart = ({ commit }, data) => {
+export const addShoppingCart = ({commit}, data) => {
   return new Promise((resolve, reject) => {
     commit('ADD_SHOPPING_CART', data);
   });
 };
 
 // 获取用户推荐
-export const loadRecommend = ({ commit }) => {
+export const loadRecommend = ({commit}) => {
   return new Promise((resolve, reject) => {
     const data = [
       [
@@ -664,7 +665,7 @@ export const loadRecommend = ({ commit }) => {
   });
 };
 
-export const loadAddress = ({ commit }) => {
+export const loadAddress = ({commit}) => {
   return new Promise((resolve, reject) => {
     const address = [
       {
@@ -692,7 +693,7 @@ export const loadAddress = ({ commit }) => {
   });
 };
 
-export const loadShoppingCart = ({ commit }) => {
+export const loadShoppingCart = ({commit}) => {
   return new Promise((resolve, reject) => {
     const data = [{
       goods_id: 1529931938150,
@@ -707,7 +708,7 @@ export const loadShoppingCart = ({ commit }) => {
 };
 
 // 添加注册用户
-export const addSignUpUser = ({ commit }, data) => {
+export const addSignUpUser = ({commit}, data) => {
   return new Promise((resolve, reject) => {
     const userArr = localStorage.getItem('users');
     let users = [];
@@ -720,12 +721,12 @@ export const addSignUpUser = ({ commit }, data) => {
 };
 
 // 用户登录
-export const login = ({ commit }, data) => {
+export const login = ({commit}, data) => {
   return new Promise((resolve, reject) => {
-    Axios.post('http://192.144.186.149:8080/api/user/login', {
-      name: data.username,
-      password: data.password
-    })
+    let postData = {};
+    postData.name = data.username;
+    postData.password = data.password;
+    Axios.post('http://192.144.186.149:8084/api/user/login', JSON.stringify(postData))
       .then(function (response) {
         console.log(response);
       })
@@ -757,13 +758,13 @@ export const login = ({ commit }, data) => {
 };
 
 // 退出登陆
-export const signOut = ({ commit }) => {
+export const signOut = ({commit}) => {
   localStorage.removeItem('loginInfo');
   commit('SET_USER_LOGIN_INFO', {});
 };
 
 // 判断是否登陆
-export const isLogin = ({ commit }) => {
+export const isLogin = ({commit}) => {
   const user = localStorage.getItem('loginInfo');
   if (user) {
     commit('SET_USER_LOGIN_INFO', JSON.parse(user));
