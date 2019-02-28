@@ -4,25 +4,27 @@
       <i-col span="12" offset="2" class="signup-img-box">
         <img src="static/img/signup-sale.png" alt="">
       </i-col>
-      <i-col span="8" class="box">
-        <div class="sign-up-title">
-          <h1>欢迎注册账号</h1>
-          <br>
-          <h2>BIT MALL, 天天低价品质保证, 让消费者钱更值钱</h2>
-        </div>
-        <div class="sing-up-step-box">
-          <Steps :current="signUpStep">
-              <Step title="验证手机号" icon="iphone"></Step>
-              <Step title="填写账号信息" icon="person-add"></Step>
-              <Step title="注册成功" icon="ios-checkmark-outline"></Step>
-          </Steps>
-          <div class="sign-up-box">
-            <transition mode="out-in">
-              <router-view></router-view>
-            </transition>
-          </div>
-        </div>
-      </i-col>
+
+      <!--<i-col span="8" class="box">-->
+        <!--<div class="sign-up-title">-->
+          <!--<h1>欢迎注册账号</h1>-->
+          <!--<br>-->
+          <!--<h2>BIT MALL, 天天低价品质保证, 让消费者钱更值钱</h2>-->
+        <!--</div>-->
+        <!--<div class="sing-up-step-box">-->
+          <!--<Steps :current="signUpStep">-->
+              <!--<Step title="验证手机号" icon="iphone"></Step>-->
+              <!--<Step title="填写账号信息" icon="person-add"></Step>-->
+              <!--<Step title="注册成功" icon="ios-checkmark-outline"></Step>-->
+          <!--</Steps>-->
+          <!--<div class="sign-up-box">-->
+            <!--<transition mode="out-in">-->
+              <!--<router-view></router-view>-->
+            <!--</transition>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</i-col>-->
+      <signUpBox></signUpBox>
     </Row>
     <Footer></Footer>
   </div>
@@ -30,6 +32,8 @@
 
 <script>
 import store from '@/vuex/store';
+import signUpBox from '@/components/signUp/signUpBox';
+
 import { mapState, mapMutations } from 'vuex';
 import Footer from '@/components/footer/Footer';
 export default {
@@ -50,7 +54,8 @@ export default {
     this.SET_SIGN_UP_SETP(0);
   },
   components: {
-    Footer
+    Footer,
+    signUpBox
   }
 };
 </script>
