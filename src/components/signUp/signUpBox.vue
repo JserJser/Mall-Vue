@@ -60,7 +60,7 @@ export default {
           this.addSignUpUser(father.formDate).then(result => {
             if (result) {
               this.$Message.success('注册成功');
-              father.$router.push('Login');
+              father.$router.push('/Login');
             } else {
               this.$Message.error('用户名或密码错误');
             }

@@ -720,7 +720,12 @@ export const addSignUpUser = ({commit}, data) => {
     postData = qs.stringify(postData);
     Axios.post('http://192.144.186.149:8084/api/user/register', postData)
       .then(function (response) {
-        console.log(response);
+        if (response.data.code === 200) {
+          resolve(true);
+          return true;
+        } else {
+          resolve(false);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -738,6 +743,14 @@ export const login = ({commit}, data) => {
     Axios.post('http://192.144.186.149:8084/api/user/login', postData)
       .then(function (response) {
         console.log(response);
+        if (response.data.code === 200) {
+          localStorage.setItem('loginInfo', JSON.stringify(data));
+          commit('SET_USER_LOGIN_INFO', data);
+          resolve(true);
+          return true;
+        } else {
+          resolve(false);
+        }
       })
       .catch(function (error) {
         console.log(error);

@@ -58,7 +58,9 @@ export default {
       this.$refs[name].validate((valid) => {
         if (valid) {
           this.login(father.formDate).then(result => {
+            console.log('result', result);
             if (result) {
+              console.log('denglucehnggongla');
               this.$Message.success('登陆成功');
               father.$router.push('/');
             } else {
