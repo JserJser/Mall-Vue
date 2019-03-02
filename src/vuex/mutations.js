@@ -29,6 +29,10 @@ export const SET_CAROUSELITEMS_INFO = (state, { carouselItems, activity }) => {
 export const SET_COMPUTER_INFO = (state, computer) => {
   state.computer = computer;
 };
+// 设置首页专栏数据
+export const SET_INDEXSECTION_INFO = (state, indexSections) => {
+  state.indexSections = indexSections;
+};
 
 // 设置爱吃专栏数据
 export const SET_EAT_INFO = (state, eat) => {
